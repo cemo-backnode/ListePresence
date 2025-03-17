@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model liste {
+  id_liste    Int      @id @default(autoincrement()) // Correction de la clé primaire
+  date_du_jour DateTime @default(now())
+  formateur   String   @default("coach wilfrid")
+  nom_prenom  String
+  heure_arriveer String 
+  signature   String   @unique
+} 
